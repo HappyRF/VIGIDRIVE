@@ -1,15 +1,15 @@
 #Team Details
 
-###Team Name: SyncTech
+### Team Name: SyncTech
 
-###Team Lead : Monica G
+### Team Lead : Monica G
 
-###Team Members :
+### Team Members :
 - Shruthi B
 - Kothaiarasi M
 - Rifaath Fathimah S
 
-###College: Sri Sairam Engineering College
+### College: Sri Sairam Engineering College
 
 # 🚗 VigiDrive — Intelligent Accident Detection & Emergency Alert System
 
