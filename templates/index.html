@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VigiDrive Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="brand">
+                VIGIDRIVE
+            </div>
+
+            <div class="subtitle">
+                Vehicle Safety & Accident Monitoring Dashboard
+            </div>
+
+        </div>
+
+
+        <div class="connection">
+
+            <span
+                id="connectionDot"
+                class="dot offline"
+            ></span>
+
+            <span id="connectionText">
+                ESP32 Disconnected
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+            <div>
+
+                <p class="eyebrow">
+                    LIVE MONITORING
+                </p>
+
+                <h1>
+                    Vehicle Safety Console
+                </h1>
+
+                <p class="muted">
+                    Live data received from the existing
+                    ESP32 program through USB Serial.
+                </p>
+
+            </div>
+
+
+            <div class="port-card">
+
+                <span>
+                    Serial Port
+                </span>
+
+                <strong id="serialPort">
+                    —
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN STATUS CARDS
+        ================================================== -->
+
+        <section class="status-grid">
+
+
+            <!-- Accident -->
+
+            <div class="card status-card">
+
+                <span class="label">
+                    ACCIDENT STATUS
+                </span>
+
+                <strong
+                    id="accidentStatus"
+                    class="status-normal"
+                >
+                    NORMAL
+                </strong>
+
+                <small id="warningText">
+                    No active warning
+                </small>
+
+            </div>
+
+
+            <!-- Impact -->
+
+            <div class="card metric-card">
+
+                <span class="label">
+                    IMPACT / TOTAL G
+                </span>
+
+                <strong id="impact">
+                    0.00 G
+                </strong>
+
+                <small>
+                    MPU6050
+                </small>
+
+            </div>
+
+
+            <!-- Accident Count -->
+
+            <div class="card metric-card">
+
+                <span class="label">
+                    ACCIDENT COUNT
+                </span>
+
+                <strong id="accidentCount">
+                    0
+                </strong>
+
+                <small>
+                    Detected events
+                </small>
+
+            </div>
+
+
+            <!-- Satellites -->
+
+            <div class="card metric-card">
+
+                <span class="label">
+                    SATELLITES
+                </span>
+
+                <strong id="satellites">
+                    —
+                </strong>
+
+                <small>
+                    GNSS
+                </small>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MOTION + LOCATION
+        ================================================== -->
+
+        <section class="two-column">
+
+
+            <!-- MOTION -->
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="label">
+                            MOTION
+                        </span>
+
+                        <h2>
+                            Acceleration
+                        </h2>
+
+                    </div>
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="axis-grid">
+
+                    <div>
+
+                        <span>
+                            X
+                        </span>
+
+                        <strong id="ax">
+                            0.00 G
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Y
+                        </span>
+
+                        <strong id="ay">
+                            0.00 G
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Z
+                        </span>
+
+                        <strong id="az">
+                            0.00 G
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrap">
+
+                    <canvas
+                        id="impactChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOCATION -->
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="label">
+                            LOCATION
+                        </span>
+
+                        <h2>
+                            GNSS Position
+                        </h2>
+
+                    </div>
+
+                    <span
+                        id="gpsBadge"
+                        class="small-badge"
+                    >
+                        WAITING
+                    </span>
+
+                </div>
+
+
+                <div class="location-box">
+
+
+                    <div>
+
+                        <span>
+                            Latitude
+                        </span>
+
+                        <strong id="latitude">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Longitude
+                        </span>
+
+                        <strong id="longitude">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Altitude
+                        </span>
+
+                        <strong id="altitude">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Speed
+                        </span>
+
+                        <strong id="speed">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    id="mapButton"
+                    class="map-button"
+                    disabled
+                >
+                    Open Location in Google Maps
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SYSTEM HEALTH + EVENT LOG
+        ================================================== -->
+
+        <section class="two-column">
+
+
+            <!-- SYSTEM HEALTH -->
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="label">
+                            SYSTEM HEALTH
+                        </span>
+
+                        <h2>
+                            Component Status
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="health-grid">
+
+
+                    <div class="health-item">
+
+                        <span>
+                            ESP32 / Serial
+                        </span>
+
+                        <strong id="healthSerial">
+                            Offline
+                        </strong>
+
+                    </div>
+
+
+                    <div class="health-item">
+
+                        <span>
+                            MPU6050
+                        </span>
+
+                        <strong id="healthMpu">
+                            Unknown
+                        </strong>
+
+                    </div>
+
+
+                    <div class="health-item">
+
+                        <span>
+                            GPS / GNSS
+                        </span>
+
+                        <strong id="healthGps">
+                            Unknown
+                        </strong>
+
+                    </div>
+
+
+                    <div class="health-item">
+
+                        <span>
+                            Wi-Fi
+                        </span>
+
+                        <strong id="healthWifi">
+                            Unknown
+                        </strong>
+
+                    </div>
+
+
+                    <div class="health-item">
+
+                        <span>
+                            Telegram
+                        </span>
+
+                        <strong id="healthTelegram">
+                            Unknown
+                        </strong>
+
+                    </div>
+
+
+                    <div class="health-item">
+
+                        <span>
+                            Last update
+                        </span>
+
+                        <strong id="lastUpdate">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT STREAM -->
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="label">
+                            EVENT STREAM
+                        </span>
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="logs"
+                    class="logs"
+                >
+
+                    <div class="empty">
+                        Waiting for serial events...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <span>
+            VigiDrive • Separate Dashboard
+        </span>
+
+        <span>
+            Embedded C program remains unchanged
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+
+</html>

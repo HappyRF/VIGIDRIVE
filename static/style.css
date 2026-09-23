@@ -1,0 +1,701 @@
+* {
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --bg: #07111f;
+
+    --panel: #0d1a2b;
+
+    --panel-2: #101f33;
+
+    --border: rgba(255, 255, 255, 0.09);
+
+    --text: #eef5ff;
+
+    --muted: #8ea2bb;
+
+    --accent: #42b7ff;
+
+    --green: #41d98b;
+
+    --yellow: #ffd166;
+
+    --red: #ff6678;
+}
+
+
+body {
+
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(66, 183, 255, 0.10),
+            transparent 28%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        Segoe UI,
+        Arial,
+        sans-serif;
+}
+
+
+.app {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 24px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        18px
+        0
+        28px;
+}
+
+
+.brand {
+
+    font-size: 14px;
+
+    letter-spacing: 0.22em;
+
+    font-weight: 800;
+
+    color: var(--accent);
+}
+
+
+.subtitle {
+
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+.connection {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+.dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.dot.online {
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 14px var(--green);
+}
+
+
+.dot.offline {
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    margin-bottom: 22px;
+}
+
+
+.eyebrow,
+.label {
+
+    font-size: 11px;
+
+    letter-spacing: 0.14em;
+
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+.hero h1 {
+
+    margin:
+        6px
+        0
+        8px;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            46px
+        );
+
+    letter-spacing: -0.04em;
+}
+
+
+.muted,
+small {
+
+    color: var(--muted);
+}
+
+
+.port-card {
+
+    min-width: 150px;
+
+    padding:
+        13px
+        16px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(
+            13,
+            26,
+            43,
+            0.75
+        );
+
+    border-radius: 14px;
+}
+
+
+.port-card span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   STATUS CARDS
+========================================================= */
+
+.status-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 14px;
+}
+
+
+.card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 31, 51, 0.96),
+            rgba(10, 23, 39, 0.96)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 14px 40px
+        rgba(0, 0, 0, 0.16);
+}
+
+
+.status-card {
+
+    min-height: 125px;
+}
+
+
+.status-card strong {
+
+    display: block;
+
+    margin:
+        12px
+        0
+        5px;
+
+    font-size: 25px;
+}
+
+
+.status-normal {
+
+    color: var(--green);
+}
+
+
+.status-warning {
+
+    color: var(--yellow);
+}
+
+
+.status-danger {
+
+    color: var(--red);
+}
+
+
+.metric-card strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    margin:
+        13px
+        0
+        5px;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.two-column {
+
+    display: grid;
+
+    grid-template-columns:
+        1.35fr
+        1fr;
+
+    gap: 14px;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.card-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+h2 {
+
+    margin:
+        5px
+        0
+        0;
+
+    font-size: 19px;
+}
+
+
+.live-badge,
+.small-badge {
+
+    padding:
+        6px
+        9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(
+            65,
+            217,
+            139,
+            0.10
+        );
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   ACCELERATION
+========================================================= */
+
+.axis-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.axis-grid > div,
+.location-box > div,
+.health-item {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 12px;
+
+    padding: 12px;
+}
+
+
+.axis-grid span,
+.location-box span,
+.health-item span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+
+.axis-grid strong,
+.location-box strong,
+.health-item strong {
+
+    font-size: 14px;
+}
+
+
+.chart-wrap {
+
+    height: 260px;
+
+    margin-top: 16px;
+}
+
+
+canvas {
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-box {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+}
+
+
+.map-button {
+
+    width: 100%;
+
+    margin-top: 14px;
+
+    border:
+        1px solid
+        rgba(
+            66,
+            183,
+            255,
+            0.4
+        );
+
+    background:
+        rgba(
+            66,
+            183,
+            255,
+            0.10
+        );
+
+    color: var(--text);
+
+    padding: 12px;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+.map-button:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SYSTEM HEALTH
+========================================================= */
+
+.health-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+}
+
+
+.health-item strong {
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   EVENT LOG
+========================================================= */
+
+.logs {
+
+    height: 300px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.log-item {
+
+    border-left:
+        2px solid
+        var(--accent);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.03
+        );
+
+    padding:
+        9px
+        11px;
+
+    border-radius:
+        0
+        8px
+        8px
+        0;
+
+    font-size: 12px;
+}
+
+
+.log-time {
+
+    color: var(--accent);
+
+    margin-right: 8px;
+
+    font-weight: 700;
+}
+
+
+.empty {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    padding: 20px 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    padding:
+        18px
+        3px
+        5px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .status-grid,
+    .two-column {
+
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+
+    .hero {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 620px) {
+
+    .app {
+
+        padding: 15px;
+    }
+
+
+    .topbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .status-grid,
+    .two-column,
+    .health-grid,
+    .location-box {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    footer {
+
+        flex-direction: column;
+    }
+}
