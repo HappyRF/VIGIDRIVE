@@ -1,3 +1,16 @@
+#Team Details
+
+###Team Name: SyncTech
+
+###Team Lead : Monica G
+
+###Team Members :
+- Shruthi B
+- Kothaiarasi M
+- Rifaath Fathimah S
+
+###College: Sri Sairam Engineering College
+
 # 🚗 VigiDrive — Intelligent Accident Detection & Emergency Alert System
 
 VigiDrive is an **ESP32-based intelligent accident detection and emergency alert system** designed to detect abnormal vehicle impacts, provide a short cancellation window for false alarms, determine the vehicle's location using GPS, and notify emergency contacts through Telegram.
