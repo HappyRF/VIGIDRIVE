@@ -1,4 +1,4 @@
-#Team Details
+# Team Details
 
 ### Team Name: SyncTech
 
