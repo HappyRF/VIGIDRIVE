@@ -544,3 +544,6 @@ VigiDrive aims to:
 VigiDrive is a prototype developed for academic and demonstration purposes.
 
 The current system should not be considered a certified automotive safety or emergency-response product. Further validation, safety testing, automotive-grade hardware, communication redundancy, and authorized emergency-service integration would be required before real-world deployment.
+
+# Potential Scope 
+VigiDrive with further improvements such as accident emergency control centre by connecting with ambulance, prevention of fake accident alerts, evelopment of cellular network to reduce dependency on internet has more potential to work in real time.
